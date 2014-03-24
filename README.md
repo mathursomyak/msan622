@@ -1,10 +1,10 @@
 MSAN 622 Data Visualization
 ==============================
 
-| **Name**  | [YOUR NAME] |
+| **Name**  | Sophie Engle |
 |----------:|:------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | sjengle@cs.usfca.edu |
 
 ## About Me ##
 
-[BIO: Fill in a brief bio about yourself here. Keep it between 1 and 3 sentences.]
+I am a professor at the University of San Francisco. I have a tri-color male corgi named Casablanca.
