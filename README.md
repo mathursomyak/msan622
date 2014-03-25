@@ -1,10 +1,10 @@
 MSAN 622 Data Visualization
 ==============================
 
-| **Name**  | Sophie Engle |
+| **Name**  | Somya Mathur |
 |----------:|:------------|
-| **Email** | sjengle@cs.usfca.edu |
+| **Email** | mathursomyak@gmail.com |
 
 ## About Me ##
 
-I am a professor at the University of San Francisco. I have a tri-color male corgi named Casablanca.
+I am a USF Analytics student, looking forward to being a data viz ninja!

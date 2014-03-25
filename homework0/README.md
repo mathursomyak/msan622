@@ -1,9 +1,9 @@
 Homework 0: Anscombe's Quartet
 ==============================
 
-| **Name**  | Sophie Engle |
+| **Name**  | Somya Mathur |
 |----------:|:-------------|
-| **Email** | sjengle@usfca.edu |
+| **Email** | mathursomyak@gmail.com |
 
 ## Instructions ##
 
