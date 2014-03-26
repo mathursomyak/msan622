@@ -77,3 +77,15 @@ ggsave(filename = "hw1-multiples.png", plot = hw1.multiples)
 #Multi-Line Chart.** Produce a multi-line chart from the `eu` dataset 
 #(created by transforming the `EuStockMarkets` dataset) with `time` shown on the x-axis and `price` on the
 #y-axis. Draw one line for each index on the same chart. Save the plot as `hw1-multiline.png`.
+View(eu)
+hw1.multiline <-
+  ggplot(data = eu, aes(x=time))+
+  geom_line(aes(y=DAX,color="DAX"))+
+  geom_line(aes(y=CAC,color="CAC"))+
+  geom_line(aes(y=SMI,color="SMI"))+
+  geom_line(aes(y=FTSE,color="FTSE"))+
+  ggtitle("Financial Indecies Trends")+
+  theme(plot.title = element_text(face="bold", size = 14))+
+  scale_color_discrete("Financial\nIndex")+
+  ylab("price")
+ggsave(filename = "hw1-multiline.png", plot = hw1.multiline)

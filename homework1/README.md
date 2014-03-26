@@ -1,13 +1,27 @@
 Homework 1: Basic Charts
 ==============================
 
-| **Name**  | [YOUR NAME]  |
+| **Name**  | Somya Mathur  |
 |----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | skmathur2@dons.usfca.edu |
 
 ## Instructions ##
 
-[INSTRUCTIONS: Include instructions on how to run your code. See [`homework0`](../homework0) for an example.]
+The following packages must be installed prior to running this code:
+
+- `ggplot2`
+- `devtools`
+- `sqldf`
+
+To run this code, please enter the following commands in R:
+
+```
+library(devtools)
+library(ggplot2)
+source_url("https://github.com/mathursomyak/msan622/blob/master/homework1/Homework_1.R")
+```
+
+This will generate 1 image and some text output. See below for details.
 
 ## Discussion ##
 
