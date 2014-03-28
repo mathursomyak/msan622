@@ -32,12 +32,13 @@ eu <- transform(data.frame(EuStockMarkets), time = time(EuStockMarkets))
 #Scatterplot.** Produce a scatterplot from the `movies` dataset in the `ggplot2` package, 
 #where `budget` is shown on the x-axis and `rating` is shown on the y-axis. Save the plot as `hw1-scatter.png`.
 hw1.scatter <- 
-  ggplot(movies1, aes(x=budget, y=rating, color=budget))+
-  geom_point()+
-  coord_trans(x="log2")+
-  ggtitle("Scatter Plot\nRatings by Budget")+
-  xlab("Budget: log scale")+
-  theme(plot.title = element_text(face="bold"))
+  ggplot(movies1, aes(x=budget, y=rating, color= "darkcyan"))+
+  geom_point(alpha = 0.6)+
+  #coord_trans(x="log2")+
+  ggtitle("Movies: Quality vs. Budget")+
+  xlab("Budget")+ ylab("Viewer Rating")+
+  theme(plot.title = element_text(face="bold", size = 14),
+    legend.position = "none")
 ggsave(filename = "hw1-scatter.png", plot = hw1.scatter)
 
 
@@ -47,7 +48,7 @@ ggsave(filename = "hw1-scatter.png", plot = hw1.scatter)
 #Show the results as a bar chart, and save the chart as `hw1-bar.png`.
 
 g<- as.data.frame(sort(table(genre))) #sorted orders of bars by height
-View(g)
+#View(g)
 hw1.bar <-
   ggplot(data=movies1, aes(x=genre))+
   geom_bar()+
