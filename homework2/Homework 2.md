@@ -100,4 +100,3 @@ Place all of your `R` code in `ui.r` and `server.r`, and include it and a screen
 After all of the necessary files are pushed to your repository, submit a link to your `homework2` directory on Canvas.
 
 :warning: Please note that late submissions are not accepted. GitHub shows when you modified a file, so be sure not to modify your code after the deadline!
-
