@@ -1,9 +1,7 @@
-library(shiny)
 library(ggplot2)
+data(movies)
 
-#Function to load data and shape it up
 getDataShapedUp <- function(){
-  data("movies", package = "ggplot2")
   movies1 <- subset(movies,budget>0) #filter out movies with a negative budget
   movies1 <- subset(movies1,(mpaa)!='') #filter out movies without an mpaa rating
   
@@ -19,28 +17,36 @@ getDataShapedUp <- function(){
   genre[which(count == 1 & movies1$Romance == 1)] = "Romance"
   genre[which(count == 1 & movies1$Short == 1)] = "Short"
   movies1$genre <- genre
-  
+  movies1$mpaa <- factor(movies1$mpaa, levels = c("NC-17","R","PG-13","PG"))
   return(movies1)
 }
 
-movies1 <- getDataShapedUp()
-
-#Function to make a plot
-getPlot <- function(localFrame, dotAlpha) {
-  localPlot <- ggplot(data=movies1, aes(x=budget,y=rating,color=as.factor(mpaa))) +
-    geom_point(alpha = dotAlpha ,position="jitter")
-  return(localPlot)
+makePlot <- function(DATASET, ALPHA, SIZE, PALETTE){
+  plot <- ggplot(data=movies1, aes(x=budget,y=rating,color=as.factor(mpaa))) +
+    geom_point(alpha = ALPHA, size = SIZE) +
+    #ggtitle("title")+
+    theme(panel.grid.major.x = element_blank()) +
+    theme(panel.grid.minor.y = element_blank()) +
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_text(size = 18),
+          panel.background = element_blank(),
+          legend.position = "bottom")+
+    labs(color = "MPAA Rating")+
+    xlab("Budget")+
+    scale_color_brewer(palette = PALETTE)
+  return(plot)
 }
 
-#GLOBAL OBJECTS
-globalData <- getDataShapedUp()
+# sendToGrey <- function(DATASET, GENRE_SELECTED){
+#   highlight[which(count == 1 & DATASET$GENRE_SELECTED == 1)] = T
+#   hi
+# }
 
-shinyServer(function(input, output) {
-  localFrame <- globalData
+shinyServer(function(input,output){
+  
   output$scatterPlot <- renderPlot({
-    plotty <- getPlot(localFrame,input$alpha)
-    return(plotty)})
+    mov <- getDataShapedUp()
+    show(makePlot(mov,input$alpha,input$size, input$palette))
+  })
 })
-
-runApp()
 
