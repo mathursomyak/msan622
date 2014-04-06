@@ -5,12 +5,12 @@ shinyUI(pageWithSidebar(
   sidebarPanel(
     radioButtons("MPAA_Rating", 
           label = h4("MPAA Rating"), 
-          choices = list("PG" = 1, 
-                         "PG-13" = 2, 
-                         "R" = 3, 
-                         "NC-17" = 4, 
-                         "All" = 5),
-          selected = 5),  
+          choices = list("PG" = "PG", 
+                         "PG-13" = "PG-13", 
+                         "R" = "R", 
+                         "NC-17" = "NC-17"
+                         ),
+          selected = "PG"),  
     checkboxGroupInput("Genres", 
           label = h4("Movie Genre"),
           choices = list("Action" = 1, 
@@ -38,3 +38,5 @@ shinyUI(pageWithSidebar(
     plotOutput("scatterPlot")
   )
 ))
+
+

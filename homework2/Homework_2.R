@@ -27,19 +27,45 @@ getDataShapedUp <- function(){
 # VISUALIZATION #
 #================
 movies1 <- getDataShapedUp()
+#==================================
 ggplot(data=movies1, aes(x=budget,
-                         y=rating,
-                         color=as.factor(mpaa)                        
+                         y=rating
+                                                 
                          )) +
-  geom_point(alpha = 0.5, size = 8) +
-  #ggtitle("title")+
+  geom_point(data = subset(movies1, movies1$mpaa=="R"),alpha = 0.5, size = 3,color="Dark2[1]") +
+  geom_point(data = subset(movies1, movies1$mpaa!="R"),alpha = 0.5, size = 3,color="grey")+
   theme(panel.grid.major.x = element_blank()) +
   theme(panel.grid.minor.y = element_blank()) +
   theme(axis.ticks.x = element_blank(),
         axis.text.x = element_text(size = 12),
-        panel.background = element_blank(),
-        legend.position = "bottom")+
-  labs(color = "MPAA Rating")+
-  scale_color_brewer(palette = "Dark2")
+        panel.background = element_blank() )#,
+        #legend.position = "bottom")
+  #labs(color = "MPAA Rating")+
+  #scale_color_brewer(palette = "Dark2")
+#===================================
+# highlight <- "R"
+# pal <- brewer_pal(type = "qual", palette = "Set1")(4)
+# mpaas <- levels(movies1$mpaa)
+# paldf <- cbind(pal,mpaas)
+# newColor <- paldf[,1]
+# newColor[which(mpaas!=highlight)] = "#bdbdbd"
+# paldf <- c(paldf,newColor)
+# View(paldf)
+
+
+ggplot(data=movies1, aes(x=budget, y=rating, color=as.factor(mpaa))) +
+  geom_point(alpha = 0.5, size = 3,) +
+  #geom_point(data = subset(movies1, movies1$mpaa!="R"),alpha = 0.5, size = 3,color="grey")+
+  theme(panel.grid.major.x = element_blank()) +
+  theme(panel.grid.minor.y = element_blank()) +
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_text(size = 12),
+        panel.background = element_blank() ,
+        legend.position = "bottom") +
+  labs(color = "MPAA Rating") +
+  scale_fill_manual(values = pal)
+
+genre[which(count > 1)] = "Mixed"
+
 
 

@@ -1,4 +1,6 @@
 library(ggplot2)
+library(shiny)
+library(scales)
 data(movies)
 
 getDataShapedUp <- function(){
@@ -20,33 +22,43 @@ getDataShapedUp <- function(){
   movies1$mpaa <- factor(movies1$mpaa, levels = c("NC-17","R","PG-13","PG"))
   return(movies1)
 }
+movies1 <- getDataShapedUp()
 
-makePlot <- function(DATASET, ALPHA, SIZE, PALETTE){
+colors <- function(PALETTE, MPAA){
+  highlight <- MPAA
+  pal <- brewer_pal(type = "qual", palette = PALETTE)(4)
+  mpaas <- c("NC-17","R","PG-13","PG")
+  paldf <- cbind(pal,mpaas)
+  newColor <- paldf[,1]
+  newColor[which(mpaas!=highlight)] = "#bdbdbd"
+  return (newColor)
+}
+
+makePlot <- function(ALPHA, SIZE, PALETTE, MPAA){
+  mypalette <- colors(PALETTE,MPAA)
+  mypalette
   plot <- ggplot(data=movies1, aes(x=budget,y=rating,color=as.factor(mpaa))) +
     geom_point(alpha = ALPHA, size = SIZE) +
-    #ggtitle("title")+
-    theme(panel.grid.major.x = element_blank()) +
-    theme(panel.grid.minor.y = element_blank()) +
-    theme(axis.ticks.x = element_blank(),
-          axis.text.x = element_text(size = 18),
+    theme(panel.grid.major.x = element_blank(),
+          panel.grid.minor.y = element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.text.x = element_text(size = 12),
           panel.background = element_blank(),
           legend.position = "bottom")+
     labs(color = "MPAA Rating")+
     xlab("Budget")+
-    scale_color_brewer(palette = PALETTE)
+    scale_fill_manual(values = mypalette)
   return(plot)
 }
 
-# sendToGrey <- function(DATASET, GENRE_SELECTED){
-#   highlight[which(count == 1 & DATASET$GENRE_SELECTED == 1)] = T
-#   hi
-# }
+
 
 shinyServer(function(input,output){
   
   output$scatterPlot <- renderPlot({
     mov <- getDataShapedUp()
-    show(makePlot(mov,input$alpha,input$size, input$palette))
+    print(makePlot(mov,input$alpha,input$size, input$palette, input$mpaa))
   })
 })
+
 
