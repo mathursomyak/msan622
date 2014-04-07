@@ -1,5 +1,6 @@
 library(ggplot2)
 data(movies)
+library(RColorBrewer)
 
 # MOVIES DATA TRANSFORM #
 #========================
@@ -51,11 +52,20 @@ ggplot(data=movies1, aes(x=budget,
 # newColor[which(mpaas!=highlight)] = "#bdbdbd"
 # paldf <- c(paldf,newColor)
 # View(paldf)
+colors <- function(PALETTE, MPAA){
+  highlight <- MPAA
+  pal <- brewer_pal(type = "qual", palette = PALETTE)(4)
+  mpaas <- c("NC-17","R","PG-13","PG")
+  paldf <- cbind(pal,mpaas)
+  newColor <- paldf[,1]
+  newColor[which(mpaas!=highlight)] = "#bdbdbd"
+  return (newColor)
+}
 
 
+mypal <- colors("Dark2","R")
 ggplot(data=movies1, aes(x=budget, y=rating, color=as.factor(mpaa))) +
-  geom_point(alpha = 0.5, size = 3,) +
-  #geom_point(data = subset(movies1, movies1$mpaa!="R"),alpha = 0.5, size = 3,color="grey")+
+  geom_point(alpha = 0.5, size = 3) +
   theme(panel.grid.major.x = element_blank()) +
   theme(panel.grid.minor.y = element_blank()) +
   theme(axis.ticks.x = element_blank(),
@@ -63,9 +73,11 @@ ggplot(data=movies1, aes(x=budget, y=rating, color=as.factor(mpaa))) +
         panel.background = element_blank() ,
         legend.position = "bottom") +
   labs(color = "MPAA Rating") +
-  scale_fill_manual(values = pal)
+  scale_fill_manual(values = mypal)
 
 genre[which(count > 1)] = "Mixed"
+
+c(brewer.pal(length(levels(movies1$genre)), "Dark2"), "#FFFFFF")
 
 
 
