@@ -1,4 +1,4 @@
-Homework [#]: [HOMEWORK NAME]
+Homework 3: Multivariate
 ==============================
 
 | **Name**  | Somya Mathur  |
