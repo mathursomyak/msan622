@@ -2,7 +2,7 @@ library(shiny)
 
 shinyUI(fluidPage(
   
-  titlePanel(h1("US Illiteracy by Income")),
+  titlePanel("US Illiteracy by Income"),
   
   sidebarLayout(
     
@@ -25,8 +25,8 @@ shinyUI(fluidPage(
       h3("Zoom In"),
       sliderInput(
         "x_lims", 
-        "", min = 3000, max = 6700, 
-        value = c(3000,6000)
+        "", min = 30000, max = 67000, 
+        value = c(30000,67000)
         ),
       
       h3("Bubble Size"),
@@ -38,15 +38,21 @@ shinyUI(fluidPage(
           "State Area" = "Area",
           "Population Density" = "PopDensity"),
         selected = "Population"
-        )
+        ),
+      div(),
+      h6("_______________________"),
+      h6("Income: per capita 1974"),
+      h6("Illiteracy: percentage of pop 1970"),
+      width = 2
       ),
     
       mainPanel(
         tabsetPanel(
-          tabPanel("Bubble Plot", plotOutput("bubblePlot")), 
-          tabPanel("Small Multiples", plotOutput("smaMult")) 
-          #,tabPanel("Table", tableOutput("table"))
-        )
+          tabPanel("Bubble Plot", plotOutput("bubblePlot",height = "600px")), 
+          tabPanel("Small Multiples", plotOutput("smaMult", height = "600px")),
+          tabPanel("Parallel Coordinates", plotOutput("PCoord"))
+        ),
+        width = 10
       )
     )
   )
