@@ -6,7 +6,6 @@ library(grid)
 require(GGally)
 require(plyr)
 
-runGitHub("msan622", "mathursomyak", subdir = "homework3")
 
 #Munging
 #--------

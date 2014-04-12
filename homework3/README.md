@@ -6,18 +6,17 @@ Homework [#]: [HOMEWORK NAME]
 | **Email** | mathursomyak@gmail.com |
 
 ## Instructions ##
-
-runGitHub("msan622", "mathursomyak", subdir = "homework3")
-
-Libraries Required:
-'''library(shiny)
+'''
+library(shiny)
 library(ggplot2)
 library(RColorBrewer)
 library(scales)
 library(grid)
 require(GGally)
-require(plyr)'''
+require(plyr)
 
+shiny::runGitHub("msan622", "mathursomyak", subdir = "homework3")
+'''
 ## Discussion ##
 
 ####Bubble Plot####
