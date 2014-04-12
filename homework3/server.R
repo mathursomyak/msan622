@@ -262,7 +262,11 @@ shinyServer(function(input,output){
     p <- p + theme(panel.grid.major.x = element_line(color = "#bbbbbb"))
     
     # Move label to bottom
-    p <- p + theme(legend.position = "bottom")
+    p <- p + theme(legend.position = "bottom",
+                   legend.text = element_text(size = 13),
+                   axis.text = element_text(size = 13))
+    
+    # Increase font size
     
     # Figure out y-axis range after GGally scales the data
     min_y <- min(p$data$value)
