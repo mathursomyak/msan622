@@ -78,3 +78,13 @@ theme_minimal <- function(base_size = 12) (
         plot.margin =       unit(c(0, 0, 0, 0), "lines")
     ), class = "options")
 )
+
+library(shiny) 
+library(ggplot2) 
+library(RColorBrewer) 
+library(scales) 
+library(grid) 
+require(GGally) 
+require(plyr)
+
+shiny::runGitHub("msan622", "mathursomyak", subdir = "homework3") 
