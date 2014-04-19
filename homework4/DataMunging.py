@@ -4,16 +4,20 @@ import re
 from sklearn.feature_extraction.text import CountVectorizer
 import csv
 
+#-------------------------
+#Text for ManyEyes Plot 3:
+#-------------------------
 AliceNoPunct = ""
 with open("AliceInWonderland.txt","r") as b:
     for line in b:
         out = line.translate(None,string.punctuation)
         AliceNoPunct = AliceNoPunct+" "+out
-
-#Text for ManyEyes:
 #print AliceNoPunct
 
-
+"""
+#-------------------------
+#CSV for Shiny Plot 1:
+#-------------------------
 listy = AliceNoPunct.split('\n')
 chapterText=[]
 thisChapter = ""
@@ -25,7 +29,7 @@ for i in range(len(listy)):
             thisChapter = ''
 chapterText.append(thisChapter)
 
-names = ['alice','sister','rabbit','cat','queen','king','caterpillar','madhatter','jacks']
+names = ['alice','sister','rabbit','cat','queen','king','caterpillar','madhatter','jacks','turtle']
 myCsv = []
 for c in range(1,13):   #skip before first chapter
     words,counts = None,0
@@ -35,7 +39,6 @@ for c in range(1,13):   #skip before first chapter
     x = X.toarray()
     words = CountVec.get_feature_names()
     counts = (x.sum(axis=0))
-    #newCH = [[c,words[i],counts[i]] for i in range(len(words))]
     CH = []
     for n in names:
         if n in words:
@@ -50,8 +53,22 @@ with open(csvName,'wb') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['Chapter','Word','Count'])
     writer.writerows(myCsv)
+"""
+#--------------------------------------
+#List of all the words in CSV Plot 2:
+#--------------------------------------
+Book = AliceNoPunct.split()
+CountVec = CountVectorizer(min_df=2, stop_words='english',ngram_range=(1,2))
+X = CountVec.fit_transform(Book)
+x = X.toarray()
+words = CountVec.get_feature_names()
+counts = (x.sum(axis=0))
 
+myCsv = [[i,words[i],counts[i]] for i in range(len(words))]
+with open('AliceTextWordCloud.csv','wb') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(['ID','Word','Count'])
+    writer.writerows(myCsv)
 
-#print names.index("somya")
-#for i in range(len(words)):
-#    print i,counts[i],words[i]
+for i in myCsv:
+    print i

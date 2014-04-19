@@ -1,19 +1,25 @@
-require(tm)        # corpus
-require(SnowballC) # stemming
+require (wordcloud)
+library(Rcpp)
+library(wordcloud)
+library(RColorBrewer)
 
+AiW <- read.csv("C:/Users/skmathur/Documents/GitHub/msan622/homework4/AliceTextWordCloud1.csv")
+View(AiW)
 
-# religion_source <- DirSource(
-#     # indicate directory
-#     directory = file.path("corpus"),
-#     encoding = "UTF-8",     # encoding
-#     pattern = "*.txt",      # filename pattern
-#     recursive = FALSE,      # visit subdirectories?
-#     ignore.case = FALSE)    # ignore case in pattern?
-# 
-# gita_corpus <- Corpus(
-#     religion_source, 
-#     readerControl = list(
-#         reader = readPlain, # read as plain text
-#         language = "en"))   # language is english
+pal <- brewer.pal(8,"Blues")
+pal <- pal[6:8]
 
-
+wordcloud( words    = AiW$Word
+           ,freq    = AiW$Count
+           ,scale   = c(8,.4)
+           ,min.freq= 25
+           #,max.words =
+           ,random.order=F
+           #,random.color=T
+           #,rot.per=
+           ,colors = pal
+           #,ordered.colors =
+           ,use.r.layout = T
+           ,fixed.asp = T
+        
+           )
