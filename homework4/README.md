@@ -1,4 +1,4 @@
-Homework [4]: Text Visualization
+Homework 4: Text Visualization
 ==============================
 
 | **Name**  | Somya Mathur  |
@@ -12,7 +12,7 @@ Homework [4]: Text Visualization
 ```library(sqldf)
 library(ggplot2)
 library(shiny)
-shiny::runGitHub("msan622", "mathursomyak", subdir = "homework3")
+shiny::runGitHub("msan622", "mathursomyak", subdir = "homework4")
 ```
 
 **Plot 2**

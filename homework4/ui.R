@@ -11,7 +11,7 @@ shinyUI(fluidPage(
     sidebarLayout(
         
         sidebarPanel(
-            h3("Chaper Progression"),
+            h3("Chapter Progression"),
             sliderInput("chapter", "", min = 1, max = 12, value = 1, animate=TRUE ),
             width = 2
             ),

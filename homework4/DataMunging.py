@@ -12,9 +12,9 @@ with open("AliceInWonderland.txt","r") as b:
     for line in b:
         out = line.translate(None,string.punctuation)
         AliceNoPunct = AliceNoPunct+" "+out
-#print AliceNoPunct
+print AliceNoPunct
 
-"""
+
 #-------------------------
 #CSV for Shiny Plot 1:
 #-------------------------
@@ -29,7 +29,7 @@ for i in range(len(listy)):
             thisChapter = ''
 chapterText.append(thisChapter)
 
-names = ['alice','sister','rabbit','cat','queen','king','caterpillar','madhatter','jacks','turtle']
+names = ['alice','sister','rabbit','cat','queen','king','caterpillar','hatter','jacks','turtle']
 myCsv = []
 for c in range(1,13):   #skip before first chapter
     words,counts = None,0
@@ -53,7 +53,7 @@ with open(csvName,'wb') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['Chapter','Word','Count'])
     writer.writerows(myCsv)
-"""
+
 #--------------------------------------
 #List of all the words in CSV Plot 2:
 #--------------------------------------
@@ -69,6 +69,3 @@ with open('AliceTextWordCloud.csv','wb') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['ID','Word','Count'])
     writer.writerows(myCsv)
-
-for i in myCsv:
-    print i
