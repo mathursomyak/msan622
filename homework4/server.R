@@ -1,8 +1,7 @@
-library(sqldf)
 library(ggplot2)
 library(shiny)
 
-AiW <- read.csv("C:/Users/skmathur/Documents/GitHub/msan622/homework4/AliceTextbyCh.csv")
+AiW <- read.csv("AliceTextbyCh.csv")
 
 
 as.factor(AiW$Word)
