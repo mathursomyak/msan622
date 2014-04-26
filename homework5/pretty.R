@@ -85,6 +85,7 @@ theme_legend <- function() {
             legend.title = element_blank(),
             legend.background = element_blank(),
             legend.key = element_blank()
+
         )
     )
 }

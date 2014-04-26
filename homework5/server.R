@@ -77,7 +77,12 @@ shinyServer(function(input, output) {
         p <- p + scale_y_continuous(
             limits = c(0, 0.4),
             expand = c(0, 0))
-        
+        p <- p + scale_fill_discrete(
+            labels = c("Drivers Killed","Drivers Injured","Passenger Killed or Injured","Backseat Passenger Killed or Injured"))
+        p <- p + scale_color_discrete(guide= "none")
+        p <- p + theme(axis.title=element_blank(),
+                       axis.text =element_text(size = 15),
+                       legend.text=element_text(size = 15))
         print(p) 
     })
     

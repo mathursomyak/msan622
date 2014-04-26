@@ -57,7 +57,7 @@ deathsByYear <- sqldf(
 names(deathsByYear)<- c('year','drivers','front','back','petrol','vankill','kms')
 deathsByYear$all <- deathsByYear$drivers+deathsByYear$front+deathsByYear$back
 
-View(deathsByYear)
+#View(deathsByYear)
 p <- ggplot(deathsByYear, aes(x=year, y=all))+geom_bar(stat="identity")
 #p <- p+ scale_y_discrete(expand = c(0,0), limits=c(0,0.3))
 p <- p+ xlab("Year") + ylab("People Hurt / KM driven")
