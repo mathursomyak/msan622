@@ -1,9 +1,9 @@
-Homework [#]: [HOMEWORK NAME]
+Homework 5 : Temporal Visualization
 ==============================
 
-| **Name**  | [YOUR NAME]  |
+| **Name**  | Somya Mathur  |
 |----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | mathursomyak@gmail.com |
 
 ## Instructions ##
 
