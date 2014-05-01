@@ -1,10 +1,13 @@
 Project: Prototype
 ==============================
 
-| **Name**  | [YOUR NAME]  |
+| **Name**  | Somya Mathur  |
 |----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | mathursomyak@gmail.com |
+
+## Insturctions ##
+
+runGitHub("msan622", "mathursomyak", subdir = "project-prototype")
+
 
 ## Discussion ##
-
-[DISCUSSION: Include a discussion here if required by the assignment.]
