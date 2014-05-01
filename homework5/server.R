@@ -3,6 +3,7 @@ library(shiny)
 library(ggplot2)
 library(reshape2) # melt
 source("pretty.r")
+library(sqldf)
 
 # Data Munging #################
 data(Seatbelts)
