@@ -44,6 +44,9 @@ shinyServer(function(input, output) {
                         na.rm=T,
                         alpha= 0.5)
                        )
+        p <- p + scale_size_area(max_size = 10, guide = "none")
+        # Force the dots to plot larger in legend
+        p <- p + guides(colour = guide_legend(override.aes = list(size = 8)))
         print(p)
         
     })
