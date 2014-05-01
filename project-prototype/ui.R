@@ -10,6 +10,6 @@ shinyUI(fluidPage(
                            "Guitar-based" = "guitarBased")),
             width=2
             ),
-        mainPanel(plotOutput("Plotty"),width=10)
+        mainPanel(plotOutput("Plotty",height="600px"),width=10)
     )
 ))
