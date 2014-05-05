@@ -1,10 +1,16 @@
-Final Project
+MSAN 622 Final Project: Movies
 ==============================
 
-| **Name**  | [YOUR NAME]  |
-|----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Name**  | Somya Mathur |
+|----------:|:------------|
+| **Email** | mathursomyak@gmail.com |
 
-## Discussion ##
+## Instructions ##
+runGitHub("msan622", "mathursomyak", subdir = "project-prototype")
 
-[DISCUSSION: Include a discussion here if required by the assignment.]
+## Description ##
+
+**Data**:  
+All Movie Data (http://www.the-numbers.com/movies/)
+Netflix Data   (http://netflixroulette.net/api/)
+Academy Awards (http://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films)
