@@ -1,15 +1,31 @@
 library(shiny)
-shinyUI(fluidPage(
-    titlePanel("title panel"),
+library(shiny)
+library(ggplot2)
+
+dataset <- diamonds
+movies <- read.csv("movies1.csv")
+
+# fluidRow(
+#     column(6,
+#            h1("Movies Released 2008 - 2012"),
+#            br(),
+#            selectInput('popGroup', 'Groups', c("Oscar","Blockbuster"), names(dataset)[[2]])
+#     )
     
-    sidebarLayout(
-        sidebarPanel( 
-            radioButtons("splitter", "splitter",
-                         c("Urban Origin" = "urbanOrigin",
-                           "Contemporary" = "contemporary",
-                           "Guitar-based" = "guitarBased")),
-            width=2
-            ),
-        mainPanel(plotOutput("Plotty",height="600px"),width=10)
-    )
+shinyUI(navbarPage("Movies",
+                   tabPanel("Density Plot"),
+                   tabPanel("Component 2"),
+                   tabPanel("Movie Seasons",
+                       fluidPage(
+                           fluidRow(
+                               column(2,
+                                      h1("Movies Released 2008 - 2012"),
+                                      br(),
+                                      selectInput('popGroup', 'Groups', c("Oscar","Blockbuster"))
+                                      ),
+                               column(10,
+                                      plotOutput("plotty",height="700px")
+                                      )
+                               ))
+                    )
 ))
