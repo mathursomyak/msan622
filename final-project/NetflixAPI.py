@@ -2,6 +2,8 @@ __author__ = 'skmathur'
 import csv
 import sys
 from NetflixRoulette import *
+from rottentomatoes import RT
+
 
 # Import and cleanup raw data
 movies2012 = []
@@ -31,13 +33,16 @@ for row in movies2012:
 doing_netflix = False
 
 if doing_netflix:
+    print 'Doing Netflix'
     for m,movie in enumerate(movies_data):
         title = movie[1]
-        try: movie.append(get_media_rating(title))
-        except: movie.append('NA')
+        try:
+            movie.extend([get_media_rating(title),'On Netflix'])
+        except:
+            movie.extend(['NA','Not On Netflix'])
 else:
     for movie in movies_data:
-        movie.append("NetflixRating")
+        movie.extend(["NetflixRating","On-Off NF"])
 
 
 # Supplement with Academy Award Info
@@ -56,6 +61,38 @@ for awardMovie in AcademyAwards:
         if movie[1] == awardMovie[0]:
             movie[-3:] = awardMovie[-3:]
 
+# Add in Rotten Tomatos Info
+RTapi = "nyppmmzdm2t9kthqnkr894sc"
+for movie in movies_data:
+    title = movie[1]
+    try:
+        r = RT(RTapi).feeling_lucky(title)
+        movie.extend([r['ratings']['critics_score'],r['ratings']['audience_score']])
+    except:
+        print title, "#############not on RT!!!!!!!!!!!!!!!!!!!!!!!!!"
+        movie.extend(["NA","NA"])
+
+# Create a general genre column for easy graphing
+for movie in movies_data:
+    Genre = movie[2]
+    BigGenre = ''
+    Oscar = ''
+    Blockbuster = ''
+
+    if Genre in ["Action","Adventure","Comedy","Drama","Horror","Thriller/Suspense"]: BigGenre = Genre
+    elif Genre in ["Black Comedy","Romantic Comedy"]: BigGenre = 'Comedy'
+    else: BigGenre = 'Other'
+    movie.append(BigGenre)
+
+    if movie[9] > 0: Oscar = " Not Nominated"
+    else: Oscar = " Nominated"
+    movie.append(Oscar)
+
+    if movie[4] > 100000000: Blockbuster = " Over 100M"
+    else: Blockbuster = " Under 100M"
+    movie.append(Blockbuster)
+
+
 # Add Convenient Date Format
 def date_translate(date):
     month_translate = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
@@ -73,8 +110,8 @@ for movie in movies_data:
 
 
 # Write out your new dataset
-headers = ['ReleaseDate', 'Movie', 'Genre', 'ProductionBudget', 'DomesticBoxOfficeToDate','Year','NetflixRating','Awards','Nominations','BestPicture','CalDate']
-with open('movies1.csv', 'wb') as csvfile:
+headers = ['ReleaseDate', 'Movie', 'Genre', 'ProductionBudget', 'DomesticBoxOfficeToDate','Year','NetflixRating','OnNetflix','Awards','Nominations','BestPicture','RottenTomatosCriticsScore','RottenTomatosAudienceScore','BigGenre','Oscar','Blockbuster','CalDate']
+with open('movies3.csv', 'wb') as csvfile:
     spamwriter = csv.writer(csvfile)
     spamwriter.writerow(headers)
     spamwriter.writerows(movies_data)

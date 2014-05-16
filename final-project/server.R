@@ -5,15 +5,13 @@ library(grid)
 
 # Define server logic required to plot various variables against mpg
 shinyServer(function(input, output) {
-    movies <- read.csv("movies1.csv") # Has caldate
+    mymovies <- read.csv("movies3.csv") # Has caldate
+    
+    #MOVIE SEASONS - PLOT 1
     output$plotty <- renderPlot({
         
-        # The Two New Fill Variables
-        Oscar <- as.factor(ifelse(movies$Nominations > 0, " Nominated", " Not Nominated"))
-        Blockbuster <- as.factor(ifelse(movies$DomesticBoxOfficeToDate > 100000000, " Over 100M", " Under 100M"))
-        
         # Create the Plot
-      p <-ggplot(movies, aes_string(x = "CalDate", fill=input$popGroup)) +
+      p <-ggplot(mymovies, aes_string(x = "CalDate", fill=input$popGroup)) +
             geom_density(alpha=.3) +
             # Month labels for x axis
             scale_x_discrete(breaks=c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"),
@@ -40,4 +38,21 @@ shinyServer(function(input, output) {
             )
             print(p)
     })
+    #OVERRATED MOVIES - PLOT 2
+    #NVD3
+    output$overrated <- renderChart({
+        p1 <- nPlot(RottenTomatosAudienceScore ~ RottenTomatosCriticsScore,
+                    group = 'BigGenre', 
+                    data = mymovies, 
+                    type = 'scatterChart'
+        )
+        p1$xAxis(axisLabel = 'Critics Score')
+        p1$yAxis(axisLabel = 'Audience Score')
+        p1$chart(tooltipContent = "#! function(key, x, y, e){ 
+            return e.point.Movie + ' ('+e.point.Year+')'
+            } !#")
+        p1$addParams(dom = 'overrated')
+        return(p1)
+    })
 })
+

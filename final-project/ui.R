@@ -1,9 +1,8 @@
 library(shiny)
-library(shiny)
 library(ggplot2)
 
-dataset <- diamonds
-movies <- read.csv("movies1.csv")
+
+#movies <- read.csv("movies3.csv")
 
 # fluidRow(
 #     column(6,
@@ -12,20 +11,37 @@ movies <- read.csv("movies1.csv")
 #            selectInput('popGroup', 'Groups', c("Oscar","Blockbuster"), names(dataset)[[2]])
 #     )
     
-shinyUI(navbarPage("Movies",
-                   tabPanel("Density Plot"),
-                   tabPanel("Component 2"),
+shinyUI(navbarPage("Movies Released 2008-2012",
+                   
                    tabPanel("Movie Seasons",
                        fluidPage(
                            fluidRow(
                                column(2,
-                                      h1("Movies Released 2008 - 2012"),
+                                      h1("Movies by Release Date"),
                                       br(),
-                                      selectInput('popGroup', 'Groups', c("Oscar","Blockbuster"))
+                                      h5("Group Populations By:"),
+                                      radioButtons('popGroup', '', c("Oscar","Blockbuster"))
                                       ),
                                column(10,
                                       plotOutput("plotty",height="700px")
                                       )
                                ))
-                    )
+                    ),
+                   tabPanel("Critics vs Audience",
+                        fluidPage(
+                            fluidRow(
+                                column(2,
+                                       h1("Ratings by Critics and Audience"),
+                                       br(),
+                                       h5("* Scroll over any point to see more details"),
+                                       br(),
+                                       h5("* Click on the genres in the legend to filter")
+                                       ),
+                                column(10,
+                                       showOutput("overrated", "NVD3")
+                                       )
+                                ))
+                    ),
+                   tabPanel("Financials by Genre"),
+                   tabPanel("What's on Netflix")
 ))
