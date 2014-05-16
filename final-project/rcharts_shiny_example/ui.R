@@ -10,13 +10,13 @@ shinyUI(pageWithSidebar(
         selectInput(inputId = "y",
                     label = "Choose Y",
                     choices = c('SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth'),
-                    selected = "SepalWidth"),
-        width = 2
+                    selected = "SepalWidth")
+        
     ),
     mainPanel(
         #showOutput("myChart3", "NVD3"),
         #showOutput("myChart4", "polycharts"),
-        plotOutput("boxplots"),
-        width = 10
+        plotOutput("boxplots")
+        
     )
 ))

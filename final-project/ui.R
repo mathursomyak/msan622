@@ -33,6 +33,8 @@ shinyUI(navbarPage("Movies Released 2008-2012",
                                 column(2,
                                        h1("Ratings by Critics and Audience"),
                                        br(),
+                                       h5("Please wait a moment for the graph to load"),
+                                       br(),
                                        h5("* Scroll over any point to see more details"),
                                        br(),
                                        h5("* Click on the genres in the legend to filter")
@@ -46,12 +48,32 @@ shinyUI(navbarPage("Movies Released 2008-2012",
                         fluidPage(
                             fluidRow(
                                 column(2,
-                                       h1("some title")
+                                       h1("Genre Dollars & Cents"),
+                                       br(),
+                                       h5("Choose the Y axis:"),
+                                       radioButtons('dollars', '', 
+                                                    c("ProductionBudget",
+                                                      "DomesticBoxOfficeToDate"))
                                        ),
                                 column(10,
-                                       plotOutput("boxplots")#,height="700px")
+                                       plotOutput("boxplots",height="700px")
                                        )
                                 ))
                     ),
-                   tabPanel("What's on Netflix")
+                   tabPanel("What's on Netflix",
+                        fluidPage(
+                            fluidRow(
+                                column(2,
+                                       h1("Genre Dollars & Cents"),
+                                       br(),
+                                       h5("Choose the Y axis:"),
+                                       radioButtons('dollars', '', 
+                                                    c("ProductionBudget",
+                                                      "DomesticBoxOfficeToDate"))
+                                ),
+                                column(10,
+                                       showOutput("netflix", "NVD3")
+                                )
+                            ))
+                    )
 ))

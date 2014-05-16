@@ -1,6 +1,7 @@
 require(devtools)
 install_github('rCharts', 'ramnathv')
 library(rCharts)
+library(sqldf)
 
 mymovies <-read.csv("movies3.csv")
 
@@ -38,17 +39,11 @@ n1##n1$print("chart3")
 
 # GRAPH 3
 require(ggplot2)
-BoxPlots <- sqldf(
-    "select * 
-    from mymovies
-    where Genre in 
-    ('Comedy','Action','Adventure','Drama','Horror','Romantic Comedy','Thriller/Suspense')")
 
-write.csv(file="BoxPlots.csv", x=BoxPlots)
-BoxPlots$Genre <- factor(BoxPlots$Genre,
+mymovies$BigGenre <- factor(mymovies$BigGenre,
                          levels= 
                              c('Drama','Horror','Thriller/Suspense','Comedy', 
-                               'Romantic Comedy',"Action","Adventure"),
+                               'Romantic Comedy',"Action","Adventure","Other"),
                          ordered = T)
 
 
@@ -57,8 +52,8 @@ BoxPlots$Genre <- factor(BoxPlots$Genre,
 million_formatter <- function(x) {
     return(sprintf("$%1.0f Mil", round(x / 1000000)))
 }
-ggplot(data=BoxPlots)+
-    geom_boxplot(aes(x=Genre,y=ProductionBudget,fill=Genre),
+ggplot(data=mymovies)+
+    geom_boxplot(aes(x=BigGenre,y=ProductionBudget,fill=BigGenre),
                  alpha = 0.6,
                  stat = "boxplot", position = "dodge",
                   outlier.size = 0, notch = FALSE)+

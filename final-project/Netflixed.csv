@@ -1,15 +1,15 @@
-"","OnNetflix","Genre","Freq"
-"1","On Netflix","Romantic Comedy",5
-"2","On Netflix","Horror",10
-"3","On Netflix","Action",14
-"4","On Netflix","Adventure",18
+"","OnNetflix","BigGenre","Freq"
+"1","On Netflix","Horror",10
+"2","On Netflix","Action",14
+"3","On Netflix","Adventure",18
+"4","On Netflix","Other",18
 "5","On Netflix","Thriller/Suspense",19
-"6","On Netflix","Comedy",25
-"7","Not on Netflix","Romantic Comedy",37
-"8","Not on Netflix","Horror",40
+"6","On Netflix","Comedy",34
+"7","Not on Netflix","Horror",40
+"8","Not on Netflix","Other",42
 "9","On Netflix","Drama",47
 "10","Not on Netflix","Action",78
 "11","Not on Netflix","Thriller/Suspense",84
 "12","Not on Netflix","Adventure",85
-"13","Not on Netflix","Comedy",153
-"14","Not on Netflix","Drama",199
+"13","Not on Netflix","Drama",199
+"14","Not on Netflix","Comedy",200
