@@ -43,7 +43,8 @@ BoxPlots <- sqldf(
     from mymovies
     where Genre in 
     ('Comedy','Action','Adventure','Drama','Horror','Romantic Comedy','Thriller/Suspense')")
-levels(BoxPlots$Genre) <- c("Adventure","Action",'Comedy','Drama','Horror','Romantic Comedy','Thriller/Suspense')
+
+write.csv(file="BoxPlots.csv", x=BoxPlots)
 BoxPlots$Genre <- factor(BoxPlots$Genre,
                          levels= 
                              c('Drama','Horror','Thriller/Suspense','Comedy', 

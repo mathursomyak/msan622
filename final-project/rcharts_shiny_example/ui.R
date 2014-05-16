@@ -14,8 +14,9 @@ shinyUI(pageWithSidebar(
         width = 2
     ),
     mainPanel(
-        showOutput("myChart3", "NVD3"),
+        #showOutput("myChart3", "NVD3"),
         #showOutput("myChart4", "polycharts"),
+        plotOutput("boxplots"),
         width = 10
     )
 ))

@@ -1,6 +1,8 @@
 require(rCharts)
 require(shiny)
+require(ggplot2)
 mymovies <-read.csv("movies22.csv") # Has caldate
+BoxPlots <-read.csv("BoxPlots.csv")
 shinyServer(function(input, output) {
 
     #NVD3
@@ -18,5 +20,12 @@ shinyServer(function(input, output) {
         p1$addParams(dom = 'myChart3')
         return(p1)
     })
-   
+    
+    output$boxplots <- renderChart({
+        
+        p<-ggplot(data=BoxPlots)+
+            geom_boxplot(aes(x=Genre,y=ProductionBudget,fill=BigGenre))
+        
+        print(p)
+    })
 })

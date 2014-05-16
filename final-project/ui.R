@@ -42,6 +42,16 @@ shinyUI(navbarPage("Movies Released 2008-2012",
                                        )
                                 ))
                     ),
-                   tabPanel("Financials by Genre"),
+                   tabPanel("Financials by Genre",
+                        fluidPage(
+                            fluidRow(
+                                column(2,
+                                       h1("some title")
+                                       ),
+                                column(10,
+                                       plotOutput("boxplots")#,height="700px")
+                                       )
+                                ))
+                    ),
                    tabPanel("What's on Netflix")
 ))
