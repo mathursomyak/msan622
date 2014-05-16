@@ -23,20 +23,21 @@ p1$yAxis(axisLabel = 'Audience Score')
 p1
 
 # GRAPH 4
+        #where Genre in ('Action','Adventure','Comedy','Drama','Horror','Romantic Comedy','Thriller/Suspense')
 Netflixed <- sqldf(
-    "select OnNetflix,Genre,count(*) 
+    "select OnNetflix,BigGenre,count(*),avg(NetflixStars)
     from mymovies
-    where Genre in ('Action','Adventure','Comedy','Drama','Horror','Romantic Comedy','Thriller/Suspense')
-    group by OnNetflix, Genre
+    group by OnNetflix, BigGenre
     order by count(*)")
 
-names(Netflixed)[3] <- "Freq"
+names(Netflixed)[3:4] <- c("Freq","NetflixStars")
 write.csv(file="Netflixed.csv", x=Netflixed)
 
 NetflixedDF <- read.csv("Netflixed.csv")
-n1 <- nPlot(Freq ~ Genre, group = "OnNetflix", data = NetflixedDF, type = "multiBarChart")
+n1 <- nPlot(Freq ~ BigGenre, group = "OnNetflix", data = NetflixedDF, type = "multiBarChart")
 n1##n1$print("chart3")
-
+n2 <- nPlot(NetflixStars ~ BigGenre, data = subset(Netflixed,Netflixed$OnNetflix=="On Netflix"),type="multiBarChart")
+n2
 # GRAPH 3
 require(ggplot2)
 

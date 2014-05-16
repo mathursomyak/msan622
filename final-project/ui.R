@@ -64,12 +64,12 @@ shinyUI(navbarPage("Movies Released 2008-2012",
                         fluidPage(
                             fluidRow(
                                 column(2,
-                                       h1("Genre Dollars & Cents"),
+                                       h1("Genres of Netflix"),
                                        br(),
-                                       h5("Choose the Y axis:"),
-                                       radioButtons('dollars', '', 
-                                                    c("ProductionBudget",
-                                                      "DomesticBoxOfficeToDate"))
+                                       h5("Choose Your View:"),
+                                       radioButtons('graphtype', '', 
+                                                    c("Bar Chart with Counts",
+                                                      "Star Ratings"))
                                 ),
                                 column(10,
                                        showOutput("netflix", "NVD3")

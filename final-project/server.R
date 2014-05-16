@@ -99,6 +99,9 @@ shinyServer(function(input, output) {
     output$netflix <- renderChart({
         n1 <- nPlot(Freq ~ BigGenre, group = "OnNetflix", data = NetflixedDF, type = "multiBarChart")
         n1$addParams(dom = 'netflix')
+        
+        n2 <- nPlot(NetflixStars ~ BigGenre, data = subset(Netflixed,Netflixed$OnNetflix=="On Netflix"),type="multiBarChart")
+        n2$addParams(dom = 'netflix')
         return(n1)
     })
 })
