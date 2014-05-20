@@ -5,8 +5,22 @@ MSAN 622 Final Project: Movies
 |----------:|:------------|
 | **Email** | mathursomyak@gmail.com |
 
-## Instructions ##
-runGitHub("msan622", "mathursomyak", subdir = "final-project")
+## Instructions ##  
+require(devtools)  
+install_github('rCharts', 'ramnathv')  
+library(rCharts)  
+library(ggplot2)   
+library(plyr)
+library(grid)
+library(shiny)  
+library(stats)
+
+
+runGitHub("msan622", "mathursomyak", subdir = "final-project")  
+
+The prefered method for running, however, is to download the directory 
+and use the ```runApp()``` command. The fourth plot only appears when run this way.
+I am still trying to fix this.
 
 ## Description ##
 
