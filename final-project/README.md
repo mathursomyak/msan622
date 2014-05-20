@@ -59,14 +59,19 @@ legend and increased the plot height via Shiny to achieve maximal information.
 
 **3. graph strengths:** I designed this graph to show the patterns in the data. There is not much else the user can get from this graph except that oscar season is cyclical, and there are times of high-oscar-density, or hight-blockbuster-density and that those are not the same highs.  
 
-**4. what I learned:**
+**4. what I learned:** I did not expect there to be such dramatic differences between oscar season and the rest of the year.This shows me that movie directors know what kind of movie they're making and self-select into a specific timeframe during the year.  
+
 
 #### Graph 2 ####
 This scatter plot shows how movies are perceived by critics vs. the lay audience. I used
 the Rotton Tomatoes API to aquire rating information for all the movies in my dataset 
 (that were available through Rotten Tomatoes). I wanted to give the user the ability to hover over a movie (a point on the scatter plot) and see its title, oscar nomination status, critics score and audience score. The only way I know to do that is through rCharts. However, rCharts is a new tool for me and much documentation is still unavailable. I did have the opportunity to ask the creator of rCharts questions via the StackOverflow forum -- he was very helpful, but that process took some time.  
 Overplotting was an issue here, but I thought that the user could combat that through the
-magnify (aka zoom) and filtering options provided through the interface.
+magnify (aka zoom) and filtering options provided through the interface.  
+
+**1. data encoding:** y-axis is audience score, x-axis is critic score, and color encodes BigGenre.  
+
+**2. graph evaluation on lie factor, data density, and data to ink ratio:**
 
 #### Graph 3 ####
 I wanted to display differences in spending (and revenue) across genres of my dataset. Here again, I've used the ```BigGenre``` column. I thought the most convenient way for the user to see these
