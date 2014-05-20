@@ -74,7 +74,12 @@ This final project was my first time using rCharts which implements a great deal
 ##Prototype Feedback##  
 Unfortunately, this activity did not have much impact on my project because I changed the dataset I was using after we did this activity. However, it did give me ideas on things I could do in my own app. I think only one person in our group was far enough along, but not too far along in his app to allow the feedback to be realy useful.  
 
-##Challenges##  
+##Challenges##   
+####Solved:####  
+*Getting the data into a format that was easy to graph required constantly going back to tweak my Python code. By the end of this project, that python code is very sub-optimal. I forloop through the same list 5-6 times. It started running pretty slow. So I found the loop that ran the slowest, and made it optional to run without it. This sped-up my development process.  
+*Customizing the ```tooltip``` in graph 2 was challenging because it involed writing a javascript-like function and there were no examples of what I wanted to do readily available online. I used stackoverflow to figure it out.  
+*rCharts requires different syntax in shiny than ggplot2, it took a few hours of struggling to understand the renderChart{} syntax's equivalents in ggplot.  
+####Unsolved:####  
 *I was unable to re-size the rCharts outputs (graphs 2 and 4)
 *I cannot figure out why plot 4 sometimes doesn't show up (I think only when you try to run
 it through ```runGitHub()```)  
