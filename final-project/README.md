@@ -66,4 +66,17 @@ differences were though side-by-side box plots.
 To customize this plot, I simplified the types of boxes, chose not to show outliers, formatted the y-axis labels, and removed the background grid. Only horizontal lines are required for the user to compare useful information in this graph, so those are the only ones I kept in order to maximze the data-to-ink ratio.
 
 #### Graph 4 ####
-How many movies from each genre are on Netflix? The goal here was to show if there were particular genres that tend to come up on Netflix's roster more than others -- most likely because neflix users prefer them. This was my second plot in rCharts, which gives the interactivity to stack the bars to better see ratios.
+How many movies from each genre are on Netflix? The goal here was to show if there were particular genres that tend to come up on Netflix's roster more than others -- most likely because neflix users prefer them. This was my second plot in rCharts, which gives the interactivity to stack the bars to better see ratios.  
+
+##Interactivity##  
+This final project was my first time using rCharts which implements a great deal of interactivity for you, like zooming and filtering. I implemented interactivity to give users different "views" of the data. For example, one of the graphs allows you to choose what the y-axis will be.  
+
+##Prototype Feedback##  
+Unfortunately, this activity did not have much impact on my project because I changed the dataset I was using after we did this activity. However, it did give me ideas on things I could do in my own app. I think only one person in our group was far enough along, but not too far along in his app to allow the feedback to be realy useful.  
+
+##Challenges##  
+*I was unable to re-size the rCharts outputs (graphs 2 and 4)
+*I cannot figure out why plot 4 sometimes doesn't show up (I think only when you try to run
+it through ```runGitHub()```)  
+*I wish I'd had time to implement more interactivity like filtering by genre in graph 1  
+*In graph 4, I wanted to include counts by year, to see how many recent moviese are on Netflix
