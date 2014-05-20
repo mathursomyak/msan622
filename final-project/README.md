@@ -71,13 +71,25 @@ magnify (aka zoom) and filtering options provided through the interface.
 
 **1. data encoding:** y-axis is audience score, x-axis is critic score, and color encodes BigGenre.  
 
-**2. graph evaluation on lie factor, data density, and data to ink ratio:**
+**2. graph evaluation on lie factor, data density, and data to ink ratio:** The lie factor here is ~1 because I have not jittered the points or scaled by size. The data density within the graph is high, but the graph does not take up the whole space of the webpage. I believe the scroll over feature that gives more information about the point the user points to also increases the amount of data available from the graph. The data to ink ratio is high because there are no extra markings on the graph. I did include some notes in the side panel that are supposed to help the user interact with the graph, and I thought they were worth including even at the cost of some data-to-ink ratio.
+
+**3. graph strengths:** This graph is excellent for outlier detection and some basic pattern recognition about differences between genres. In a scatter plot, it's very easy to see points that fall outside the usual pattern -- in this case those points are very low auidence score compared to critics score or visa-versa. There is also a patter that there are more dramas that are highly rated by both critics and the audience than most other genres.
+
+**4. what I learned:** I was not aware of which movies were highly rated. I would have liked to implement a search type function where the user could free-form type in a movie title and if it was in the dataset, the searched movie would be highlighted. I did not have time to figure out if this was possible in rCharts.
 
 #### Graph 3 ####
 I wanted to display differences in spending (and revenue) across genres of my dataset. Here again, I've used the ```BigGenre``` column. I thought the most convenient way for the user to see these
 differences were though side-by-side box plots.  
 
-To customize this plot, I simplified the types of boxes, chose not to show outliers, formatted the y-axis labels, and removed the background grid. Only horizontal lines are required for the user to compare useful information in this graph, so those are the only ones I kept in order to maximze the data-to-ink ratio.
+To customize this plot, I simplified the types of boxes, chose not to show outliers, formatted the y-axis labels, and removed the background grid. Only horizontal lines are required for the user to compare useful information in this graph, so those are the only ones I kept in order to maximze the data-to-ink ratio.  
+
+**1. data encoding:** y-axis is either the Production Budget or the Box Office Revenue, and the x-axis has the BigGenre categories from my dataset, with box plots for each genre  
+
+**2. graph evaluation on lie factor, data density, and data to ink ratio:** There is some lie factor here because I did not include the outliers in this analysis. It was too confusing and skewed the y-axis, making comparison more difficult. This graph has medium data density and high data to ink ratio. The data density isn't high because there is a lot of white space, but I found that this was the clearest way to represent the information.
+
+**3. graph strengths:** Provides an excellent comparison between genres, and is ordered to facilitate the user in correctly interpreting the graph. 
+
+**4. what I learned:** I did not know, prior to making this graph, that genres with higher budgets also tend to have higher revenue. Seeing as the drama genre had higher overall ratings (from graph 2) , I thought that perhaps Drama movies would see higher revenue at the box office as well. This plot disproved my hypothesis. Perhaps Action and Adventure movies gross more because people prefer to see those in theatres, but they can just watch a drama movie at home (on netflix perhaps...)
 
 #### Graph 4 ####
 How many movies from each genre are on Netflix? The goal here was to show if there were particular genres that tend to come up on Netflix's roster more than others -- most likely because neflix users prefer them. This was my second plot in rCharts, which gives the interactivity to stack the bars to better see ratios.  

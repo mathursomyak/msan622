@@ -199,10 +199,19 @@ by their relesae dates throughout the year. This plot shows a marked pattern of
 &ldquo;Oscar Season&rdquo; &ndash; it is clear that few Oscar nominees are released in May, for example.<br/>
 Similarly, the interactivity of this graph allows the user to view the &ldquo;Blockbusters&rdquo;
 population by release date. Unsurprisingly, most block-busters are released in the summer 
-and during the holiday break period.<br/>
-I customized this graph by choosing a low alpha so that both populations are easily visable. Ideally, I&#39;d be able to subset the movies by genre. I was careful to include
+and during the holiday break period.  </p>
+
+<p>I customized this graph by choosing a low alpha so that both populations are easily visable. Ideally, I&#39;d be able to subset the movies by genre. I was careful to include
 only relevant information on the plot, and to maximize the size of the plot. I moved the 
-legend and increased the plot height via Shiny to achieve maximal information.</p>
+legend and increased the plot height via Shiny to achieve maximal information.  </p>
+
+<p><strong>1. data encoding:</strong> the y-axis is frequency and the x-axis is months of the year. Every movie from my dataset has a release date (with a separate column for year released), and I used a python function to turn that date into a number between 0 and 12 to make graphing more simple.  </p>
+
+<p><strong>2. graph evaluation on lie factor, data density, and data to ink ratio:</strong> Because this is a density plot of technically discrete data, there is some smoothing being done by ggplot, which means there is some lie factor. I believe this is justified in showing the major features of the graph. The data density is fairly high, because I put the legend on the graph and there&#39;s very little else on the display besides the data. The data to ink ratio isn&#39;t perfect because I chose to leave the grey back panel in this graph, but besides that, most of the ink is encoding some useful information.  </p>
+
+<p><strong>3. graph strengths:</strong> I designed this graph to show the patterns in the data. There is not much else the user can get from this graph except that oscar season is cyclical, and there are times of high-oscar-density, or hight-blockbuster-density and that those are not the same highs.  </p>
+
+<p><strong>4. what I learned:</strong> I did not expect there to be such dramatic differences between oscar season and the rest of the year.This shows me that movie directors know what kind of movie they&#39;re making and self-select into a specific timeframe during the year.  </p>
 
 <h4>Graph 2</h4>
 
@@ -210,14 +219,26 @@ legend and increased the plot height via Shiny to achieve maximal information.</
 the Rotton Tomatoes API to aquire rating information for all the movies in my dataset 
 (that were available through Rotten Tomatoes). I wanted to give the user the ability to hover over a movie (a point on the scatter plot) and see its title, oscar nomination status, critics score and audience score. The only way I know to do that is through rCharts. However, rCharts is a new tool for me and much documentation is still unavailable. I did have the opportunity to ask the creator of rCharts questions via the StackOverflow forum &ndash; he was very helpful, but that process took some time.<br/>
 Overplotting was an issue here, but I thought that the user could combat that through the
-magnify (aka zoom) and filtering options provided through the interface.</p>
+magnify (aka zoom) and filtering options provided through the interface.  </p>
+
+<p><strong>1. data encoding:</strong> y-axis is audience score, x-axis is critic score, and color encodes BigGenre.  </p>
+
+<p><strong>2. graph evaluation on lie factor, data density, and data to ink ratio:</strong> The lie factor here is ~1 because I have not jittered the points or scaled by size. The data density within the graph is high, but the graph does not take up the whole space of the webpage. I believe the scroll over feature that gives more information about the point the user points to also increases the amount of data available from the graph. The data to ink ratio is high because there are no extra markings on the graph. I did include some notes in the side panel that are supposed to help the user interact with the graph, and I thought they were worth including even at the cost of some data-to-ink ratio.</p>
+
+<p><strong>3. graph strengths:</strong> This graph is excellent for outlier detection and some basic pattern recognition about differences between genres. In a scatter plot, it&#39;s very easy to see points that fall outside the usual pattern &ndash; in this case those points are very low auidence score compared to critics score or visa-versa. There is also a patter that there are more dramas that are highly rated by both critics and the audience than most other genres.</p>
+
+<p><strong>4. what I learned:</strong> I was not aware of which movies were highly rated. I would have liked to implement a search type function where the user could free-form type in a movie title and if it was in the dataset, the searched movie would be highlighted. I did not have time to figure out if this was possible in rCharts.</p>
 
 <h4>Graph 3</h4>
 
 <p>I wanted to display differences in spending (and revenue) across genres of my dataset. Here again, I&#39;ve used the <code>BigGenre</code> column. I thought the most convenient way for the user to see these
 differences were though side-by-side box plots.  </p>
 
-<p>To customize this plot, I simplified the types of boxes, chose not to show outliers, formatted the y-axis labels, and removed the background grid. Only horizontal lines are required for the user to compare useful information in this graph, so those are the only ones I kept in order to maximze the data-to-ink ratio.</p>
+<p>To customize this plot, I simplified the types of boxes, chose not to show outliers, formatted the y-axis labels, and removed the background grid. Only horizontal lines are required for the user to compare useful information in this graph, so those are the only ones I kept in order to maximze the data-to-ink ratio.  </p>
+
+<p><strong>1. data encoding:</strong> y-axis is audience score, x-axis is critic score, and color encodes BigGenre.  </p>
+
+<p><strong>2. graph evaluation on lie factor, data density, and data to ink ratio:</strong> The lie factor here is ~1 because I have not jittered the points or scaled by size. The </p>
 
 <h4>Graph 4</h4>
 
