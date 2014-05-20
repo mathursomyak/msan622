@@ -5,7 +5,7 @@ MSAN 622 Final Project: Movies
 |----------:|:------------|
 | **Email** | mathursomyak@gmail.com |
 
-## Instructions ##  
+## Instructions ##
 require(devtools)  
 install_github('rCharts', 'ramnathv')  
 library(rCharts)  
@@ -41,18 +41,27 @@ original number of genres was too many to code with colors, so I rolled-up genre
 ```BigGenre``` in my dataset. My choices for combining smaller genres can be reviewed in the python
 code.
 
-#### Graph 1 ####  
+#### Graph 1 ####
 I created a density plot that shows the density of Academy Award Nominated films
 by their relesae dates throughout the year. This plot shows a marked pattern of 
 "Oscar Season" -- it is clear that few Oscar nominees are released in May, for example.  
 Similarly, the interactivity of this graph allows the user to view the "Blockbusters"
 population by release date. Unsurprisingly, most block-busters are released in the summer 
 and during the holiday break period.  
+
 I customized this graph by choosing a low alpha so that both populations are easily visable. Ideally, I'd be able to subset the movies by genre. I was careful to include
 only relevant information on the plot, and to maximize the size of the plot. I moved the 
-legend and increased the plot height via Shiny to achieve maximal information.
+legend and increased the plot height via Shiny to achieve maximal information.  
 
-#### Graph 2 ####  
+**1. data encoding:** the y-axis is frequency and the x-axis is months of the year. Every movie from my dataset has a release date (with a separate column for year released), and I used a python function to turn that date into a number between 0 and 12 to make graphing more simple.  
+
+**2. graph evaluation on lie factor, data density, and data to ink ratio:** Because this is a density plot of technically discrete data, there is some smoothing being done by ggplot, which means there is some lie factor. I believe this is justified in showing the major features of the graph. The data density is fairly high, because I put the legend on the graph and there's very little else on the display besides the data. The data to ink ratio isn't perfect because I chose to leave the grey back panel in this graph, but besides that, most of the ink is encoding some useful information.  
+
+**3. graph strengths:** I designed this graph to show the patterns in the data. There is not much else the user can get from this graph except that oscar season is cyclical, and there are times of high-oscar-density, or hight-blockbuster-density and that those are not the same highs.  
+
+**4. what I learned:**
+
+#### Graph 2 ####
 This scatter plot shows how movies are perceived by critics vs. the lay audience. I used
 the Rotton Tomatoes API to aquire rating information for all the movies in my dataset 
 (that were available through Rotten Tomatoes). I wanted to give the user the ability to hover over a movie (a point on the scatter plot) and see its title, oscar nomination status, critics score and audience score. The only way I know to do that is through rCharts. However, rCharts is a new tool for me and much documentation is still unavailable. I did have the opportunity to ask the creator of rCharts questions via the StackOverflow forum -- he was very helpful, but that process took some time.  
@@ -68,18 +77,18 @@ To customize this plot, I simplified the types of boxes, chose not to show outli
 #### Graph 4 ####
 How many movies from each genre are on Netflix? The goal here was to show if there were particular genres that tend to come up on Netflix's roster more than others -- most likely because neflix users prefer them. This was my second plot in rCharts, which gives the interactivity to stack the bars to better see ratios.  
 
-##Interactivity##  
-This final project was my first time using rCharts which implements a great deal of interactivity for you, like zooming and filtering. I implemented interactivity to give users different "views" of the data. For example, one of the graphs allows you to choose what the y-axis will be.  
+## Interactivity ##
+This final project was my first time using rCharts which implements a great deal of interactivity for you, like zooming and filtering. I implemented interactivity to give users different "views" of the data. For example, one of the graphs allows you to choose what the y-axis will be. Much of this interactivity is discussed above for individual graphs.  
 
-##Prototype Feedback##  
+## Prototype Feedback ##
 Unfortunately, this activity did not have much impact on my project because I changed the dataset I was using after we did this activity. However, it did give me ideas on things I could do in my own app. I think only one person in our group was far enough along, but not too far along in his app to allow the feedback to be realy useful.  
 
-##Challenges##   
-####Solved:####  
+## Challenges ##
+#### Solved: ####
 *Getting the data into a format that was easy to graph required constantly going back to tweak my Python code. By the end of this project, that python code is very sub-optimal. I forloop through the same list 5-6 times. It started running pretty slow. So I found the loop that ran the slowest, and made it optional to run without it. This sped-up my development process.  
 *Customizing the ```tooltip``` in graph 2 was challenging because it involed writing a javascript-like function and there were no examples of what I wanted to do readily available online. I used stackoverflow to figure it out.  
 *rCharts requires different syntax in shiny than ggplot2, it took a few hours of struggling to understand the renderChart{} syntax's equivalents in ggplot.  
-####Unsolved:####  
+#### Unsolved: ####
 *I was unable to re-size the rCharts outputs (graphs 2 and 4)
 *I cannot figure out why plot 4 sometimes doesn't show up (I think only when you try to run
 it through ```runGitHub()```)  

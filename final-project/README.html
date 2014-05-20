@@ -158,14 +158,94 @@ hr {
 
 <h2>Instructions</h2>
 
-<p>runGitHub(&ldquo;msan622&rdquo;, &ldquo;mathursomyak&rdquo;, subdir = &ldquo;final-project&rdquo;)</p>
+<p>require(devtools)<br/>
+install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)<br/>
+library(rCharts)<br/>
+library(ggplot2)<br/>
+library(plyr)
+library(grid)
+library(shiny)<br/>
+library(stats)</p>
+
+<p>runGitHub(&ldquo;msan622&rdquo;, &ldquo;mathursomyak&rdquo;, subdir = &ldquo;final-project&rdquo;)  </p>
+
+<p>The prefered method for running, however, is to download the directory 
+and use the <code>runApp()</code> command. The fourth plot only appears when run this way.
+I am still trying to fix this.</p>
 
 <h2>Description</h2>
 
 <p><strong>Data</strong>:<br/>
-All Movie Data (<a href="http://www.the-numbers.com/movies/">http://www.the-numbers.com/movies/</a>)<br/>
+All Movie Data (<a href="http://www.the-n">http://www.the-n</a>
+umbers.com/movies/)<br/>
 Netflix Data   (<a href="http://netflixroulette.net/api/">http://netflixroulette.net/api/</a>)<br/>
-Academy Awards (<a href="http://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films">http://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a>)  </p>
+Academy Awards (<a href="http://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films">http://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a>)<br/>
+Rotten Tomatoes (<a href="https://pypi.python.org/pypi/rottentomatoes">https://pypi.python.org/pypi/rottentomatoes</a>)  </p>
+
+<p>Aggregating these data sources took a good amount of time. I wrote a python script, called
+<code>NetflixAPI.py</code> that creates the base data set. Plot 4 required the data to be in
+a simplified format, so I created a separate csv file in the <code>rcharts_experiment.R</code> code.  </p>
+
+<p>I made some decisions about more general genres than the ones provided by my data sources. The 
+original number of genres was too many to code with colors, so I rolled-up genres like <code>Comedy</code>,
+<code>Romantic Comedy</code>,and <code>Black Comedy</code> into one Comedy genre. I called these rolled-up genres
+<code>BigGenre</code> in my dataset. My choices for combining smaller genres can be reviewed in the python
+code.</p>
+
+<h4>Graph 1</h4>
+
+<p>I created a density plot that shows the density of Academy Award Nominated films
+by their relesae dates throughout the year. This plot shows a marked pattern of 
+&ldquo;Oscar Season&rdquo; &ndash; it is clear that few Oscar nominees are released in May, for example.<br/>
+Similarly, the interactivity of this graph allows the user to view the &ldquo;Blockbusters&rdquo;
+population by release date. Unsurprisingly, most block-busters are released in the summer 
+and during the holiday break period.<br/>
+I customized this graph by choosing a low alpha so that both populations are easily visable. Ideally, I&#39;d be able to subset the movies by genre. I was careful to include
+only relevant information on the plot, and to maximize the size of the plot. I moved the 
+legend and increased the plot height via Shiny to achieve maximal information.</p>
+
+<h4>Graph 2</h4>
+
+<p>This scatter plot shows how movies are perceived by critics vs. the lay audience. I used
+the Rotton Tomatoes API to aquire rating information for all the movies in my dataset 
+(that were available through Rotten Tomatoes). I wanted to give the user the ability to hover over a movie (a point on the scatter plot) and see its title, oscar nomination status, critics score and audience score. The only way I know to do that is through rCharts. However, rCharts is a new tool for me and much documentation is still unavailable. I did have the opportunity to ask the creator of rCharts questions via the StackOverflow forum &ndash; he was very helpful, but that process took some time.<br/>
+Overplotting was an issue here, but I thought that the user could combat that through the
+magnify (aka zoom) and filtering options provided through the interface.</p>
+
+<h4>Graph 3</h4>
+
+<p>I wanted to display differences in spending (and revenue) across genres of my dataset. Here again, I&#39;ve used the <code>BigGenre</code> column. I thought the most convenient way for the user to see these
+differences were though side-by-side box plots.  </p>
+
+<p>To customize this plot, I simplified the types of boxes, chose not to show outliers, formatted the y-axis labels, and removed the background grid. Only horizontal lines are required for the user to compare useful information in this graph, so those are the only ones I kept in order to maximze the data-to-ink ratio.</p>
+
+<h4>Graph 4</h4>
+
+<p>How many movies from each genre are on Netflix? The goal here was to show if there were particular genres that tend to come up on Netflix&#39;s roster more than others &ndash; most likely because neflix users prefer them. This was my second plot in rCharts, which gives the interactivity to stack the bars to better see ratios.  </p>
+
+<h2>Interactivity</h2>
+
+<p>This final project was my first time using rCharts which implements a great deal of interactivity for you, like zooming and filtering. I implemented interactivity to give users different &ldquo;views&rdquo; of the data. For example, one of the graphs allows you to choose what the y-axis will be. Much of this interactivity is discussed above for individual graphs.  </p>
+
+<h2>Prototype Feedback</h2>
+
+<p>Unfortunately, this activity did not have much impact on my project because I changed the dataset I was using after we did this activity. However, it did give me ideas on things I could do in my own app. I think only one person in our group was far enough along, but not too far along in his app to allow the feedback to be realy useful.  </p>
+
+<h2>Challenges</h2>
+
+<h4>Solved:</h4>
+
+<p>*Getting the data into a format that was easy to graph required constantly going back to tweak my Python code. By the end of this project, that python code is very sub-optimal. I forloop through the same list 5-6 times. It started running pretty slow. So I found the loop that ran the slowest, and made it optional to run without it. This sped-up my development process.<br/>
+*Customizing the <code>tooltip</code> in graph 2 was challenging because it involed writing a javascript-like function and there were no examples of what I wanted to do readily available online. I used stackoverflow to figure it out.<br/>
+*rCharts requires different syntax in shiny than ggplot2, it took a few hours of struggling to understand the renderChart{} syntax&#39;s equivalents in ggplot.  </p>
+
+<h4>Unsolved:</h4>
+
+<p>*I was unable to re-size the rCharts outputs (graphs 2 and 4)
+*I cannot figure out why plot 4 sometimes doesn&#39;t show up (I think only when you try to run
+it through <code>runGitHub()</code>)<br/>
+*I wish I&#39;d had time to implement more interactivity like filtering by genre in graph 1<br/>
+*In graph 4, I wanted to include counts by year, to see how many recent moviese are on Netflix</p>
 
 </body>
 
