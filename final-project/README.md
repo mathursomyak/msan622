@@ -94,6 +94,14 @@ To customize this plot, I simplified the types of boxes, chose not to show outli
 #### Graph 4 ####
 How many movies from each genre are on Netflix? The goal here was to show if there were particular genres that tend to come up on Netflix's roster more than others -- most likely because neflix users prefer them. This was my second plot in rCharts, which gives the interactivity to stack the bars to better see ratios.  
 
+**1. data encoding:** y-axis is counts of movies, x-axis is grouped or stacked bars by genre. Each group has the non-netflix and netflix movies counts.
+
+**2. graph evaluation on lie factor, data density, and data to ink ratio:** The lie factor is ~1 because I did not use 3-d bars or try to confuse the user in any way. The data density and data-to-ink ratio are high. Users can scroll over a bar to get the exact count if they desire.
+
+**3. graph strengths:**  This is another comaparison graph, and it does a good job of contrasting one genre to another and showing the ratio of netflix to not-on-netflix movies in each genre. 
+
+**4. what I learned:** I learned that Netflix seems to be prioritizing its aquisition of Dramas compared to Comedies. And that Drama movies tend to get higher star ratings on Netflix.
+
 ## Interactivity ##
 This final project was my first time using rCharts which implements a great deal of interactivity for you, like zooming and filtering. I implemented interactivity to give users different "views" of the data. For example, one of the graphs allows you to choose what the y-axis will be. Much of this interactivity is discussed above for individual graphs.  
 
